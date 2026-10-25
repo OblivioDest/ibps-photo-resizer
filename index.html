@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBPS & SBI Photo, Sign, Thumb & Declaration Resizer (Free 200 DPI Tool)</title>
+    <meta name="description" content="Free official 200 DPI IBPS & SBI PO/Clerk Photo, Signature, Left Thumb Impression and Hand-Written Declaration resizer and KB compressor.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .sbi-gradient { background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%); }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 min-h-screen flex flex-col">
+
+<!-- Top Navigation Header -->
+<header class="bg-slate-900 text-white shadow-md border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-extrabold text-white text-lg shadow">
+                <i class="fa-solid fa-landmark"></i>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-base sm:text-lg tracking-tight">IBPS & SBI Photo, Sign & Declaration Resizer</h1>
+                <p class="text-xs text-slate-400">Free 200 DPI, Exact Pixel & Strict KB Compressor for Bank Exams</p>
+            </div>
+        </div>
+
+        <!-- 4-Document Readiness Bar -->
+        <div class="flex flex-wrap items-center gap-2">
+            <span class="flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 px-3 py-1.5 rounded-xl border border-emerald-500/30 text-xs font-bold">
+                <i class="fa-solid fa-bolt"></i> 100% Free & Instant Download
+            </span>
+
+            <div class="flex items-center gap-2 bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700">
+                <span class="text-xs font-semibold text-slate-300 hidden sm:inline">Completed Pack:</span>
+                <div class="flex items-center gap-1.5 text-[11px] font-bold">
+                    <span id="status-photo" class="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-700">1. Photo</span>
+                    <span id="status-signature" class="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-700">2. Sign</span>
+                    <span id="status-thumb" class="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-700">3. Thumb</span>
+                    <span id="status-declaration" class="px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-700">4. Decl.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Workspace -->
+<main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- LEFT COLUMN: Preset Selector & Image Editor Controls (7 Cols) -->
+    <div class="lg:col-span-7 space-y-6">
+
+        <!-- Step 1: Select Bank Exam Document Type -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200">
+            <h2 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider mb-3">Step 1: Select Bank Exam Document Preset</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <button onclick="switchPreset('photo')" id="presetBtn-photo" class="p-3 rounded-xl border text-left transition flex flex-col justify-between bg-blue-50 border-blue-300 shadow-sm">
+                    <div class="flex items-center justify-between mb-1">
+                        <i class="fa-solid fa-user text-blue-600"></i>
+                        <span class="text-[10px] font-extrabold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded">200 DPI</span>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-900">1. Photo</div>
+                        <div class="text-[10px] text-slate-500">200×230 px • 20-50 KB</div>
+                    </div>
+                </button>
+
+                <button onclick="switchPreset('signature')" id="presetBtn-signature" class="p-3 rounded-xl border text-left transition flex flex-col justify-between bg-white border-slate-200 hover:bg-slate-50">
+                    <div class="flex items-center justify-between mb-1">
+                        <i class="fa-solid fa-signature text-slate-600"></i>
+                        <span class="text-[10px] font-extrabold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">200 DPI</span>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-900">2. Signature</div>
+                        <div class="text-[10px] text-slate-500">140×60 px • 10-20 KB</div>
+                    </div>
+                </button>
+
+                <button onclick="switchPreset('thumb')" id="presetBtn-thumb" class="p-3 rounded-xl border text-left transition flex flex-col justify-between bg-white border-slate-200 hover:bg-slate-50">
+                    <div class="flex items-center justify-between mb-1">
+                        <i class="fa-solid fa-hand text-slate-600"></i>
+                        <span class="text-[10px] font-extrabold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">200 DPI</span>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-900">3. Thumb</div>
+                        <div class="text-[10px] text-slate-500">240×240 px • 20-50 KB</div>
+                    </div>
+                </button>
+
+                <button onclick="switchPreset('declaration')" id="presetBtn-declaration" class="p-3 rounded-xl border text-left transition flex flex-col justify-between bg-white border-slate-200 hover:bg-slate-50">
+                    <div class="flex items-center justify-between mb-1">
+                        <i class="fa-solid fa-file-pen text-slate-600"></i>
+                        <span class="text-[10px] font-extrabold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">200 DPI</span>
+                    </div>
+                    <div>
+                        <div class="font-extrabold text-xs text-slate-900">4. Declaration</div>
+                        <div class="text-[10px] text-slate-500">800×400 px • 50-100 KB</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Upload or Capture Image -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">Step 2: Upload or Capture Image</h2>
+                <span id="presetRequirementTag" class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-lg">Requirement: 200×230 px (20–50 KB)</span>
+            </div>
+
+            <!-- Upload Drag & Drop Zone -->
+            <div class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-6 text-center bg-slate-50 transition cursor-pointer relative" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" accept="image/*" class="hidden" onchange="handleFileSelect(event)">
+                <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-3 text-lg">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div class="font-extrabold text-sm text-slate-900">Click to upload photo, sign, thumb or handwritten declaration</div>
+                <div class="text-xs text-slate-500 mt-1">Supports JPG, PNG, WEBP (Processed 100% locally in your browser)</div>
+            </div>
+
+            <!-- Official Declaration Reference Box (Visible when Declaration is chosen) -->
+            <div id="declarationTextBox" class="hidden bg-amber-50/90 p-3.5 rounded-xl border border-amber-300 text-xs space-y-1.5">
+                <div class="font-extrabold text-amber-950 flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-nib text-amber-600"></i> Official SBI / IBPS Hand-Written Declaration Text:
+                </div>
+                <p class="font-mono text-[11px] bg-white p-2.5 rounded-lg border border-amber-200 text-slate-800 leading-relaxed">
+                    "I, _______ (Name of the candidate), _______ (Date of Birth) hereby declare that all the information submitted by me in the application form is correct, true and valid. I will present the supporting documents as and when required. The signature, photograph and left-hand thumb impression is of mine."
+                </p>
+                <p class="text-[11px] text-amber-800">Write this in <strong>English with Black Ink on White Paper</strong>, take a photo, upload it above, and use the <strong>Whiten Paper Shadow</strong> slider below.</p>
+            </div>
+
+            <!-- Live Webcam Capture Modal trigger for Photos -->
+            <div id="webcamOptionBox" class="flex items-center justify-between bg-blue-50/70 p-3.5 rounded-xl border border-blue-200 text-xs">
+                <div class="flex items-center gap-2.5">
+                    <i class="fa-solid fa-camera text-blue-600 text-base"></i>
+                    <div>
+                        <div class="font-extrabold text-slate-900">Need a live passport photo?</div>
+                        <div class="text-slate-600">Capture directly using your phone or laptop camera.</div>
+                    </div>
+                </div>
+                <button onclick="openWebcamModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-3.5 py-2 rounded-xl transition shadow-sm shrink-0">
+                    Live Webcam Capture
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 3: Interactive Cropping, Paper Whitener & Adjustments -->
+        <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">Step 3: Crop, Position & Whiten Paper</h2>
+                <div class="flex items-center gap-1.5">
+                    <button onclick="rotateImage()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition" title="Rotate 90°">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Rotate
+                    </button>
+                    <button onclick="resetTransform()" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition" title="Reset Crop">
+                        <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <!-- Canvas Preview Container -->
+            <div class="flex flex-col items-center justify-center bg-slate-900 rounded-xl p-3 overflow-hidden relative shadow-inner">
+                <canvas id="interactiveCanvas" class="cursor-crosshair max-w-full rounded shadow"></canvas>
+                <div class="absolute bottom-4 bg-slate-950/80 text-white text-[11px] px-3 py-1 rounded-full backdrop-blur border border-slate-700 pointer-events-none">
+                    <i class="fa-solid fa-hand-pointer mr-1 text-blue-400"></i> Drag image to pan • Use sliders below to zoom & whiten paper
+                </div>
+            </div>
+
+            <!-- Zoom & Paper Whitener Controls -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-slate-600">Zoom / Scale</span>
+                        <span id="zoomVal" class="text-blue-700">100%</span>
+                    </div>
+                    <input type="range" id="zoomRange" min="25" max="350" value="100" oninput="onZoomChange(this.value)" class="w-full accent-blue-600">
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-xs font-bold">
+                        <span class="text-slate-600">Whiten Paper Shadow (Sign/Decl)</span>
+                        <span id="whitenVal" class="text-blue-700">Off</span>
+                    </div>
+                    <input type="range" id="whitenRange" min="0" max="100" value="0" oninput="onWhitenChange(this.value)" class="w-full accent-blue-600">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Output Preview, KB Lock & Download (5 Cols) -->
+    <div class="lg:col-span-5 space-y-6">
+
+        <!-- Official Bank Guidelines Notice Box -->
+        <div class="bg-amber-50 rounded-2xl p-4 border border-amber-300 text-xs text-amber-900 space-y-2">
+            <div class="flex items-center gap-2 font-extrabold text-amber-950 text-sm">
+                <i class="fa-solid fa-circle-info text-amber-600"></i>
+                <span id="guideTitle">IBPS / SBI Document Instructions</span>
+            </div>
+            <p id="guideText">
+                Photograph: Passport size, white/light background, 200×230 px, 20–50 KB. Signature: Black ink on white paper, 140×60 px, 10–20 KB. Left Thumb: Black/blue ink, 240×240 px, 20–50 KB. Declaration: Written in English in black ink, 800×400 px, 50–100 KB.
+            </p>
+        </div>
+
+        <!-- Processed Output Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden sticky top-20">
+            <!-- Header -->
+            <div class="sbi-gradient text-white p-4 flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] uppercase font-extrabold tracking-wider bg-white/20 px-2 py-0.5 rounded-full">Bank Portal Ready</span>
+                    <h3 class="font-extrabold text-base mt-0.5">Processed 200 DPI Output</h3>
+                </div>
+                <div id="validationBadge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                    <i class="fa-solid fa-circle-check mr-1"></i> Compliant
+                </div>
+            </div>
+
+            <div class="p-5 space-y-4">
+                <!-- Actual Pixel Output Preview Box -->
+                <div class="flex flex-col items-center justify-center bg-slate-50 rounded-xl p-3.5 border border-slate-200">
+                    <div class="flex items-center justify-between w-full mb-2">
+                        <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Exact Processed JPG Preview</span>
+                        <span id="cmSizeBadge" class="text-[11px] font-semibold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Physical: 4.5 cm × 3.5 cm</span>
+                    </div>
+                    <div class="relative overflow-auto max-w-full max-h-44 flex items-center justify-center p-2 bg-white rounded-lg border border-slate-200 shadow-sm">
+                        <img id="finalPreviewImg" alt="IBPS Processed Output Preview" class="max-h-36 object-contain rounded" />
+                    </div>
+                </div>
+
+                <!-- Telemetry Spec Readout Grid -->
+                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                        <div class="text-slate-400 text-[10px] font-bold">Dimensions</div>
+                        <div id="outDimText" class="font-mono font-extrabold text-slate-900 mt-0.5">200 × 230 px</div>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                        <div class="text-slate-400 text-[10px] font-bold">File Size</div>
+                        <div id="outSizeText" class="font-mono font-extrabold text-blue-700 mt-0.5">35.2 KB</div>
+                        <div id="outRangeSubtext" class="text-[10px] text-emerald-600 font-semibold">Req: 20–50 KB</div>
+                    </div>
+                    <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                        <div class="text-slate-400 text-[10px] font-bold">DPI Tag</div>
+                        <div id="outDpiText" class="font-mono font-extrabold text-emerald-700 mt-0.5">200 DPI</div>
+                        <div id="qualityUsedBadge" class="text-[10px] text-slate-500">Q: 92%</div>
+                    </div>
+                </div>
+
+                <!-- Auto-Lock KB Size Toggle -->
+                <div class="flex items-center justify-between bg-blue-50/70 p-3 rounded-xl border border-blue-200 text-xs">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-blue-600"></i>
+                        <div>
+                            <div class="font-extrabold text-slate-900">Auto-Lock KB Size Limit</div>
+                            <div class="text-slate-600">Automatically adjust quality to fit exact bank range</div>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="autoKbToggle" checked onchange="generateFinalOutput()" class="sr-only peer">
+                        <div class="w-9 h-5 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+
+                <!-- File Naming Format Option -->
+                <div class="space-y-1 text-xs">
+                    <label class="font-extrabold text-slate-700">Bank Portal File Naming Format:</label>
+                    <select id="fileNameStyle" onchange="generateFinalOutput()" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-2.5 font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="standard">Standard (photograph_200x230_200dpi.jpg)</option>
+                        <option value="annexure">Annexure Slug (photograph.jpg)</option>
+                        <option value="jpeg_ext">JPEG Extension (photograph.jpeg)</option>
+                    </select>
+                </div>
+
+                <!-- Warning Message if out of range -->
+                <div id="sizeWarningBox" class="hidden p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-start space-x-2">
+                    <i class="fa-solid fa-triangle-exclamation mt-0.5 text-rose-600"></i>
+                    <span>File size is outside the limit. Check <strong>"Auto-Lock KB Size"</strong> above to fix it automatically.</span>
+                </div>
+
+                <!-- Primary Download Button -->
+                <button onclick="downloadProcessedJpg()" id="downloadBtn" class="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-extrabold rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 text-sm">
+                    <i class="fa-solid fa-download text-base"></i>
+                    <span>Download Photograph (200 DPI)</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 mt-10 py-5 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p><strong>IBPS & SBI Photo & Sign Resizer</strong> — Official Spec Tool for SBI, IBPS, RRB, RBI & NABARD</p>
+        <span class="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+            <i class="fa-solid fa-shield-halved mr-1"></i> 100% Client-Side Privacy (Files Never Leave Your Browser)
+        </span>
+    </div>
+</footer>
+
+<!-- ==========================================
+     WEBCAM CAPTURE MODAL
+     ========================================== -->
+<div id="webcamModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-md w-full border border-slate-200 shadow-2xl overflow-hidden">
+        <div class="sbi-gradient text-white p-4 flex items-center justify-between">
+            <h3 class="font-extrabold text-sm flex items-center gap-2">
+                <i class="fa-solid fa-camera"></i> Live Passport Photo Capture
+            </h3>
+            <button onclick="closeWebcamModal()" class="text-slate-200 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+        <div class="p-4 space-y-3 text-center">
+            <div class="bg-slate-900 rounded-xl overflow-hidden relative flex items-center justify-center h-64">
+                <video id="webcamVideo" autoplay playsinline class="w-full h-full object-cover"></video>
+            </div>
+            <p class="text-xs text-slate-500">Position your face in front of a white background and look straight at the camera.</p>
+            <button onclick="captureWebcamSnapshot()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-xl transition shadow">
+                Capture Photo Now
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toastNotification" class="hidden fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl border border-slate-700 text-xs font-bold flex items-center gap-2.5">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <span id="toastText">File downloaded!</span>
+</div>
+
+<!-- Application Script -->
+<script>
+    // ==========================================
+    // 1. BANK EXAM PRESETS (SBI PO / IBPS)
+    // ==========================================
+    const GLOBAL_DOCS_STORAGE_KEY = 'ibps_completed_docs_free_v1';
+
+    const PRESETS = {
+        photo: {
+            id: 'photo',
+            name: 'Photograph',
+            width: 200,
+            height: 230,
+            minKB: 20,
+            maxKB: 50,
+            dpi: 200,
+            cmText: '4.5 cm × 3.5 cm',
+            fileSlug: 'photograph',
+            annexureSlug: 'photograph',
+            guideTitle: 'SBI / IBPS Photograph Specifications',
+            guideText: 'Passport size colour picture against white/light background. Look straight at camera. Width: 200 px, Height: 230 px, Size: 20–50 KB, Resolution: 200 DPI.'
+        },
+        signature: {
+            id: 'signature',
+            name: 'Signature',
+            width: 140,
+            height: 60,
+            minKB: 10,
+            maxKB: 20,
+            dpi: 200,
+            cmText: '4.0 cm × 2.0 cm',
+            fileSlug: 'signature',
+            annexureSlug: 'signature',
+            guideTitle: 'SBI / IBPS Signature Specifications',
+            guideText: 'Sign on white paper with Black Ink pen. CAPITAL LETTERS NOT allowed. Width: 140 px, Height: 60 px, Size: 10–20 KB, Resolution: 200 DPI.'
+        },
+        thumb: {
+            id: 'thumb',
+            name: 'Left Thumb Impression',
+            width: 240,
+            height: 240,
+            minKB: 20,
+            maxKB: 50,
+            dpi: 200,
+            cmText: '3.0 cm × 3.0 cm',
+            fileSlug: 'left_thumb_impression',
+            annexureSlug: 'left_thumb_impression',
+            guideTitle: 'SBI / IBPS Left Thumb Impression Specs',
+            guideText: 'Put left thumb impression on white paper with black/blue ink. Width: 240 px, Height: 240 px, Size: 20–50 KB, Resolution: 200 DPI.'
+        },
+        declaration: {
+            id: 'declaration',
+            name: 'Hand-Written Declaration',
+            width: 800,
+            height: 400,
+            minKB: 50,
+            maxKB: 100,
+            dpi: 200,
+            cmText: '10 cm × 5 cm',
+            fileSlug: 'handwritten_declaration',
+            annexureSlug: 'handwritten_declaration',
+            guideTitle: 'SBI / IBPS Hand-Written Declaration Specs',
+            guideText: 'Write declaration clearly in English on white paper with black ink. Width: 800 px, Height: 400 px, Size: 50–100 KB, Resolution: 200 DPI.'
+        }
+    };
+
+    let currentPreset = PRESETS.photo;
+    let originalImage = null;
+    let imgX = 0, imgY = 0, imgScale = 1, imgRotation = 0;
+    let isDragging = false;
+    let startX = 0, startY = 0;
+    let finalJpgDataUrl = '';
+    let finalFileSizeKB = 0;
+    let chosenQuality = 0.92;
+    let whitenThreshold = 0;
+    let completedDocs = { photo: false, signature: false, thumb: false, declaration: false };
+
+    try {
+        const savedDocs = localStorage.getItem(GLOBAL_DOCS_STORAGE_KEY);
+        if (savedDocs) completedDocs = JSON.parse(savedDocs);
+    } catch (e) {}
+
+    const interactiveCanvas = document.getElementById('interactiveCanvas');
+    const ctx = interactiveCanvas.getContext('2d');
+
+    window.onload = function () {
+        setupCanvasInteractions();
+        updateChecklistUI();
+        loadSampleImage();
+    };
+
+    function switchPreset(presetKey) {
+        currentPreset = PRESETS[presetKey];
+        ['photo', 'signature', 'thumb', 'declaration'].forEach(k => {
+            const btn = document.getElementById('presetBtn-' + k);
+            if (k === presetKey) {
+                btn.className = 'p-3 rounded-xl border text-left transition flex flex-col justify-between bg-blue-50 border-blue-300 shadow-sm';
+            } else {
+                btn.className = 'p-3 rounded-xl border text-left transition flex flex-col justify-between bg-white border-slate-200 hover:bg-slate-50';
+            }
+        });
+
+        document.getElementById('presetRequirementTag').textContent = `Requirement: ${currentPreset.width}×${currentPreset.height} px (${currentPreset.minKB}–${currentPreset.maxKB} KB)`;
+        document.getElementById('guideTitle').textContent = currentPreset.guideTitle;
+        document.getElementById('guideText').textContent = currentPreset.guideText;
+
+        const webcamBox = document.getElementById('webcamOptionBox');
+        if (presetKey === 'photo') webcamBox.classList.remove('hidden');
+        else webcamBox.classList.add('hidden');
+
+        const declBox = document.getElementById('declarationTextBox');
+        if (presetKey === 'declaration') declBox.classList.remove('hidden');
+        else declBox.classList.add('hidden');
+
+        resetTransform();
+    }
+
+    function loadSampleImage() {
+        const canvas = document.createElement('canvas');
+        canvas.width = 600;
+        canvas.height = 600;
+        const sCtx = canvas.getContext('2d');
+        sCtx.fillStyle = '#f1f5f9';
+        sCtx.fillRect(0, 0, 600, 600);
+        sCtx.fillStyle = '#0284c7';
+        sCtx.beginPath();
+        sCtx.arc(300, 240, 110, 0, Math.PI * 2);
+        sCtx.fill();
+        sCtx.fillStyle = '#1e293b';
+        sCtx.font = '700 24px Inter, sans-serif';
+        sCtx.textAlign = 'center';
+        sCtx.fillText('Upload Your Photo / Sign / Thumb / Declaration', 300, 420);
+
+        const img = new Image();
+        img.onload = function () {
+            originalImage = img;
+            resetTransform();
+        };
+        img.src = canvas.toDataURL('image/jpeg');
+    }
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const img = new Image();
+            img.onload = function () {
+                originalImage = img;
+                resetTransform();
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function resetTransform() {
+        if (!originalImage) return;
+        const scaleX = currentPreset.width / originalImage.width;
+        const scaleY = currentPreset.height / originalImage.height;
+        imgScale = Math.max(scaleX, scaleY);
+        const pct = Math.min(350, Math.max(25, Math.round(imgScale * 100)));
+        document.getElementById('zoomRange').value = pct;
+        document.getElementById('zoomVal').textContent = pct + '%';
+
+        imgRotation = 0;
+        imgX = (currentPreset.width - originalImage.width * imgScale) / 2;
+        imgY = (currentPreset.height - originalImage.height * imgScale) / 2;
+
+        document.getElementById('whitenRange').value = 0;
+        document.getElementById('whitenVal').textContent = 'Off';
+        whitenThreshold = 0;
+
+        renderInteractiveCanvas();
+        generateFinalOutput();
+    }
+
+    function rotateImage() {
+        imgRotation = (imgRotation + 90) % 360;
+        renderInteractiveCanvas();
+        generateFinalOutput();
+    }
+
+    function onZoomChange(val) {
+        imgScale = val / 100;
+        document.getElementById('zoomVal').textContent = val + '%';
+        renderInteractiveCanvas();
+        generateFinalOutput();
+    }
+
+    function onWhitenChange(val) {
+        whitenThreshold = parseInt(val);
+        document.getElementById('whitenVal').textContent = whitenThreshold === 0 ? 'Off' : whitenThreshold + '%';
+        renderInteractiveCanvas();
+        generateFinalOutput();
+    }
+
+    function setupCanvasInteractions() {
+        const canvas = interactiveCanvas;
+
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX - imgX;
+            startY = e.clientY - imgY;
+        });
+        window.addEventListener('mouseup', () => isDragging = false);
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            imgX = e.clientX - startX;
+            imgY = e.clientY - startY;
+            renderInteractiveCanvas();
+            generateFinalOutput();
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                isDragging = true;
+                startX = e.touches[0].clientX - imgX;
+                startY = e.touches[0].clientY - imgY;
+            }
+        }, { passive: true });
+        window.addEventListener('touchend', () => isDragging = false);
+        canvas.addEventListener('touchmove', (e) => {
+            if (!isDragging || e.touches.length !== 1) return;
+            imgX = e.touches[0].clientX - startX;
+            imgY = e.touches[0].clientY - startY;
+            renderInteractiveCanvas();
+            generateFinalOutput();
+        }, { passive: true });
+    }
+
+    function renderInteractiveCanvas() {
+        const maxDisplayW = 460;
+        const maxDisplayH = 340;
+        const scaleRatio = Math.min(maxDisplayW / currentPreset.width, maxDisplayH / currentPreset.height);
+
+        const displayW = Math.round(currentPreset.width * scaleRatio);
+        const displayH = Math.round(currentPreset.height * scaleRatio);
+
+        interactiveCanvas.width = displayW;
+        interactiveCanvas.height = displayH;
+
+        drawTransformedImage(ctx, displayW, displayH, scaleRatio);
+    }
+
+    function drawTransformedImage(targetCtx, w, h, scaleRatio) {
+        targetCtx.fillStyle = '#FFFFFF';
+        targetCtx.fillRect(0, 0, w, h);
+
+        if (!originalImage) return;
+
+        targetCtx.save();
+        targetCtx.translate(imgX * scaleRatio, imgY * scaleRatio);
+        targetCtx.translate((currentPreset.width * scaleRatio) / 2, (currentPreset.height * scaleRatio) / 2);
+        targetCtx.rotate((imgRotation * Math.PI) / 180);
+        targetCtx.scale(imgScale * scaleRatio, imgScale * scaleRatio);
+        targetCtx.drawImage(
+            originalImage,
+            -originalImage.width / 2,
+            -originalImage.height / 2
+        );
+        targetCtx.restore();
+
+        if (whitenThreshold > 0) {
+            applyPaperWhitenerToCanvas(targetCtx, w, h);
+        }
+    }
+
+    function applyPaperWhitenerToCanvas(targetCtx, w, h) {
+        const imgData = targetCtx.getImageData(0, 0, w, h);
+        const data = imgData.data;
+        const threshold = 255 - Math.round((whitenThreshold / 100) * 90);
+
+        for (let i = 0; i < data.length; i += 4) {
+            const r = data[i], g = data[i + 1], b = data[i + 2];
+            const avg = (r + g + b) / 3;
+            if (avg > threshold) {
+                data[i] = 255;
+                data[i + 1] = 255;
+                data[i + 2] = 255;
+            } else if (avg < 110) {
+                data[i] = Math.max(0, r - 30);
+                data[i + 1] = Math.max(0, g - 30);
+                data[i + 2] = Math.max(0, b - 30);
+            }
+        }
+        targetCtx.putImageData(imgData, 0, 0);
+    }
+
+    // ============================================================================
+    // 2. EXACT KB COMPRESSOR & PADDING ENGINE
+    // ============================================================================
+    function generateFinalOutput() {
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = currentPreset.width;
+        offCanvas.height = currentPreset.height;
+        const offCtx = offCanvas.getContext('2d');
+
+        drawTransformedImage(offCtx, currentPreset.width, currentPreset.height, 1);
+
+        const autoKb = document.getElementById('autoKbToggle').checked;
+        let bestDataUrl = '';
+
+        if (autoKb) {
+            let lowQ = 0.25, highQ = 0.99;
+            let bestQ = 0.92;
+            for (let i = 0; i < 8; i++) {
+                chosenQuality = (lowQ + highQ) / 2;
+                bestDataUrl = offCanvas.toDataURL('image/jpeg', chosenQuality);
+                const sizeKB = getBase64SizeInKB(bestDataUrl);
+                if (sizeKB >= currentPreset.minKB && sizeKB <= currentPreset.maxKB) {
+                    bestQ = chosenQuality;
+                    break;
+                } else if (sizeKB > currentPreset.maxKB) {
+                    highQ = chosenQuality;
+                } else {
+                    lowQ = chosenQuality;
+                    bestQ = chosenQuality;
+                }
+            }
+            chosenQuality = bestQ;
+            bestDataUrl = offCanvas.toDataURL('image/jpeg', chosenQuality);
+        } else {
+            chosenQuality = 0.90;
+            bestDataUrl = offCanvas.toDataURL('image/jpeg', chosenQuality);
+        }
+
+        finalJpgDataUrl = injectJfifDpiAndPadKB(
+            bestDataUrl,
+            currentPreset.dpi,
+            autoKb ? currentPreset.minKB : 0,
+            autoKb ? currentPreset.maxKB : 9999
+        );
+        finalFileSizeKB = getBase64SizeInKB(finalJpgDataUrl);
+
+        document.getElementById('finalPreviewImg').src = finalJpgDataUrl;
+
+        document.getElementById('outDimText').textContent = `${currentPreset.width} × ${currentPreset.height} px`;
+        document.getElementById('outSizeText').textContent = `${finalFileSizeKB.toFixed(1)} KB`;
+        document.getElementById('outRangeSubtext').textContent = `Req: ${currentPreset.minKB}–${currentPreset.maxKB} KB`;
+        document.getElementById('outDpiText').textContent = `${currentPreset.dpi} DPI`;
+        document.getElementById('cmSizeBadge').textContent = `Physical: ${currentPreset.cmText}`;
+        document.getElementById('qualityUsedBadge').textContent = `Q: ${Math.round(chosenQuality * 100)}%`;
+
+        const isValidSize = finalFileSizeKB >= currentPreset.minKB && finalFileSizeKB <= currentPreset.maxKB;
+        const badge = document.getElementById('validationBadge');
+        const sizeSub = document.getElementById('outRangeSubtext');
+        const warnBox = document.getElementById('sizeWarningBox');
+
+        if (isValidSize) {
+            badge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300';
+            badge.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> 100% Bank Compliant';
+            sizeSub.className = 'text-[10px] text-emerald-600 font-semibold mt-0.5';
+            warnBox.classList.add('hidden');
+        } else {
+            badge.className = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300';
+            badge.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> KB Out of Range';
+            sizeSub.className = 'text-[10px] text-rose-600 font-semibold mt-0.5';
+            warnBox.classList.remove('hidden');
+        }
+
+        updateDownloadButtonText();
+    }
+
+    function updateDownloadButtonText() {
+        const btn = document.getElementById('downloadBtn');
+        if (!btn) return;
+        btn.innerHTML = `
+            <i class="fa-solid fa-download text-base"></i>
+            <span>Download ${currentPreset.name} (${finalFileSizeKB.toFixed(1)} KB • ${currentPreset.dpi} DPI)</span>
+        `;
+    }
+
+    function getBase64SizeInKB(base64Str) {
+        const base64 = base64Str.split(',')[1] || base64Str;
+        const padding = (base64.endsWith('==') ? 2 : (base64.endsWith('=') ? 1 : 0));
+        return (base64.length * 0.75 - padding) / 1024;
+    }
+
+    function injectJfifDpiAndPadKB(dataUrl, dpi, minKB, maxKB) {
+        const raw = atob(dataUrl.split(',')[1]);
+        const rawLength = raw.length;
+        let array = new Uint8Array(rawLength);
+        for (let i = 0; i < rawLength; i++) {
+            array[i] = raw.charCodeAt(i);
+        }
+
+        if (array[0] === 0xFF && array[1] === 0xD8 && array[2] === 0xFF && array[3] === 0xE0) {
+            array[13] = 1;
+            array[14] = (dpi >> 8) & 0xFF;
+            array[15] = dpi & 0xFF;
+            array[16] = (dpi >> 8) & 0xFF;
+            array[17] = dpi & 0xFF;
+        }
+
+        const currentKB = array.length / 1024;
+        if (minKB > 0 && currentKB < minKB + 1.5) {
+            const targetKB = Math.min(maxKB - 1, minKB + 2.5);
+            const neededBytes = Math.max(0, Math.round((targetKB - currentKB) * 1024));
+            if (neededBytes > 6 && array[array.length - 2] === 0xFF && array[array.length - 1] === 0xD9) {
+                const payloadLen = Math.min(60000, neededBytes - 4);
+                const totalLen = payloadLen + 2;
+                const padded = new Uint8Array(array.length + payloadLen + 4);
+                padded.set(array.subarray(0, array.length - 2), 0);
+
+                let offset = array.length - 2;
+                padded[offset++] = 0xFF;
+                padded[offset++] = 0xFE;
+                padded[offset++] = (totalLen >> 8) & 0xFF;
+                padded[offset++] = totalLen & 0xFF;
+                for (let j = 0; j < payloadLen; j++) {
+                    padded[offset++] = 0x20;
+                }
+                padded[offset++] = 0xFF;
+                padded[offset++] = 0xD9;
+                array = padded;
+            }
+        }
+
+        let binary = '';
+        const chunkSize = 8192;
+        for (let i = 0; i < array.length; i += chunkSize) {
+            const chunk = array.subarray(i, i + chunkSize);
+            binary += String.fromCharCode.apply(null, chunk);
+        }
+        return 'data:image/jpeg;base64,' + btoa(binary);
+    }
+
+    function updateChecklistUI() {
+        ['photo', 'signature', 'thumb', 'declaration'].forEach(id => {
+            const el = document.getElementById('status-' + id);
+            if (!el) return;
+            if (completedDocs[id]) {
+                el.className = 'px-2 py-0.5 rounded bg-emerald-500 text-slate-950 border border-emerald-400 font-extrabold';
+                el.innerHTML = `<i class="fa-solid fa-check mr-0.5"></i> ${id.charAt(0).toUpperCase() + id.slice(1)}`;
+            } else {
+                el.className = 'px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-700';
+            }
+        });
+    }
+
+    function downloadProcessedJpg() {
+        if (!finalJpgDataUrl) return;
+
+        const style = document.getElementById('fileNameStyle').value;
+        let fileName = `${currentPreset.fileSlug}_${currentPreset.width}x${currentPreset.height}_${currentPreset.dpi}dpi.jpg`;
+        if (style === 'annexure') fileName = `${currentPreset.annexureSlug}.jpg`;
+        else if (style === 'jpeg_ext') fileName = `${currentPreset.annexureSlug}.jpeg`;
+
+        const link = document.createElement('a');
+        link.download = fileName;
+        link.href = finalJpgDataUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        completedDocs[currentPreset.id] = true;
+        try {
+            localStorage.setItem(GLOBAL_DOCS_STORAGE_KEY, JSON.stringify(completedDocs));
+        } catch (e) {}
+        updateChecklistUI();
+        showToast(`${currentPreset.name} downloaded successfully!`);
+    }
+
+    // ==========================================
+    // WEBCAM CAPTURE
+    // ==========================================
+    let mediaStream = null;
+    async function openWebcamModal() {
+        document.getElementById('webcamModal').classList.remove('hidden');
+        try {
+            mediaStream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
+            document.getElementById('webcamVideo').srcObject = mediaStream;
+        } catch (err) {
+            showToast('Unable to access webcam. Please use file upload.');
+            closeWebcamModal();
+        }
+    }
+
+    function closeWebcamModal() {
+        if (mediaStream) {
+            mediaStream.getTracks().forEach(t => t.stop());
+            mediaStream = null;
+        }
+        document.getElementById('webcamModal').classList.add('hidden');
+    }
+
+    function captureWebcamSnapshot() {
+        const video = document.getElementById('webcamVideo');
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth || 640;
+        canvas.height = video.videoHeight || 480;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+
+        const img = new Image();
+        img.onload = function () {
+            originalImage = img;
+            resetTransform();
+            closeWebcamModal();
+        };
+        img.src = canvas.toDataURL('image/jpeg');
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toastNotification');
+        const text = document.getElementById('toastText');
+        text.textContent = message;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3500);
+    }
+</script>
+</body>
+</html>
